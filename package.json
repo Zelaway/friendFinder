@@ -1,0 +1,24 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "an app that lets you find compatibility with another person",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zelaway/friendFinder.git"
+  },
+  "keywords": [
+    "friend",
+    "finder",
+    "compatibilty"
+  ],
+  "author": "adam sawyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zelaway/friendFinder/issues"
+  },
+  "homepage": "https://github.com/Zelaway/friendFinder#readme"
+}
