@@ -21,7 +21,7 @@
 			<br>
 
 			<div class="text-center">
-				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-search"></span>Search Current Users</button></a>
+				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-search"></span> Search Current Users</button></a>
 				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>		
 			</div>
 		</div>
@@ -54,8 +54,59 @@
 							</div>
 
 							<div class="form-group">
-								<label for="">FaceBook URL: Please Include Your Facebook Url so if you find match, You can request a friend request</label>
+								<label for="">FaceBook URL: Please Include Your Facebook Url so if you find a match, You can request a friend request</label>
 								<input type="text" class="form-control" id="reserve_facebookURL">
+							</div>
+
+
+							<div class="form-group">
+								<label for="">Question # 1: On a scale of 1-5, Much do you Like Star Wars? (1 - Not at All, 3 - Neutral, 5 - Ride or Die!)</label>
+								<input type="text" class="form-control" id="question_q1">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 2: On a scale of 1-5, How Interested Are you In HBO's Game of Thrones?</label>
+								<input type="text" class="form-control" id="question_q2">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 3: On a scale of 1-5, How often Do you look observe the nightly Stars (1 - Not often, 5 - All the Time)</label>
+								<input type="text" class="form-control" id="question_q3">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 4: On a scale of 1-5, How Much Do you Like Donald Trump (1- Not at all, 5 - Love Him)</label>
+								<input type="text" class="form-control" id="question_q4">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 5: On a scale of 1-5, How Bootylicious is Beyonce? (1 - Not at All, 5 - Body's Too Bootylicous for you Babe!)</label>
+								<input type="text" class="form-control" id="question_q5">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 6: On a scale of 1-5, How smart are U.S. voters? (1 - God Help Us, 5 - Most Educated)</label>
+								<input type="text" class="form-control" id="question_q6">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 7: On a scale of 1-5, How often do you go to the gym? (1 - Never, 5 - 5 or more times per week)</label>
+								<input type="text" class="form-control" id="question_q7">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 8: On a scale of 1-5, How Often do you go out with friends for drinks? (1 - Almost never, 5 - Almost Every Day)</label>
+								<input type="text" class="form-control" id="question_q8">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question # 9: On a scale of 1-5, How sad are you that President Obama is leaving (1- Don't Care, 5 - Wish He Could Stay Forever)</label>
+								<input type="text" class="form-control" id="question_q9">
+							</div>
+
+							<div class="form-group">
+								<label for="">Question #10: On a scale of 1-5, How strong is the working class/middle class (1- It's disappeared, 5 - Stronger than Ever)</label>
+								<input type="text" class="form-control" id="question_q10">
 							</div>
 
 							<button type="submit" class="btn btn-primary submit">Submit</button>
@@ -90,14 +141,25 @@
 	$(".submit").on("click", function(){
 		
 		// Here we grab the form elements
-		var newReservation = {
-			customerName: $('#reserve_name').val().trim(),
-			phoneNumber: $('#reserve_phone').val().trim(),
-			customerEmail: $('#reserve_email').val().trim(),
-			customerID: $('#reserve_uniqueID').val().trim()
+		var newUser = {
+			customerName: $('#user_name').val().trim(),
+			customerEmail: $('#user_Email').val().trim(),
+			profileName: $('#user_profileName').val().trim(),
+			facebookUrl: $('#reserve_facebookURL').val().trim(),
+			scores: [ 	$('question_q1').val().trim(),
+						$('question_q2').val().trim(),
+						$('question_q3').val().trim(),
+						$('question_q4').val().trim(),
+						$('question_q5').val().trim(),
+						$('question_q6').val().trim(),
+						$('question_q7').val().trim(),
+						$('question_q8').val().trim(),
+						$('question_q9').val().trim(),
+						$('question_q10').val().trim()
+			]
 		};
 
-		console.log(newReservation);
+		console.log(newUser);
 
 		// This line is the magic. It's very similar to the standard ajax function we used. 
 		// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
@@ -108,7 +170,7 @@
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 
-	    $.post(currentURL + "/api/tables", newReservation,
+	    $.post(currentURL + "/api/survey", newUser,
 	    function(data){
 
 	    	// If a table is available... tell user they are booked.

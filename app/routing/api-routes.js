@@ -4,8 +4,7 @@
 // These data sources hold arrays of information on table-data, waitinglist, etc.
 // ===============================================================================
 
-var tableData 		= require('../data/table-data.js');
-var waitListData 	= require('../data/waitinglist-data.js');
+var friendsList 	= require('../data/friends.js');
 var path 			= require('path');
 
 
